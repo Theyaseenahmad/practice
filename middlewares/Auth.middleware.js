@@ -6,12 +6,12 @@ export const authMiddleware = async (req,res,next)=>{
         return res.status(403).json({message:"login first"});
     }
 
-    const Userdata = await jwt.verify(token,process.env.JWT_SECRET);
+    const Userdata =  jwt.verify(token,process.env.JWT_SECRET);
 
-    const {Name,Password} = Userdata
+    const {Name,Role} = Userdata
     
 
-    console.log("authorized with data", Name, Password);
+    console.log("authorized with data", Name,Role);
 
     next();
 }
